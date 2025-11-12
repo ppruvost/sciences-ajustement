@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Droite d'ajustement - Physique</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Droite d'ajustement pour énergie reçue</h1>
+    
+    <form id="data-form">
+      <label>Temps (s) séparé par des virgules :</label>
+      <input type="text" id="time-input" placeholder="Ex: 0, 1, 2, 3" required>
+      
+      <label>Puissance (W) séparée par des virgules :</label>
+      <input type="text" id="power-input" placeholder="Ex: 10, 15, 20, 25" required>
+      
+      <button type="submit">Calculer</button>
+    </form>
+
+    <div id="equation"></div>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
