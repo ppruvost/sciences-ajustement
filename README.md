@@ -1,7 +1,5 @@
 # Droite d’Ajustement – Physique Appliquée
 
-![Illustration graphique](screenshot.png)  
-
 **Projet GitHub Pages** pour visualiser et comprendre la relation **Puissance × Temps = Énergie** avec une droite d’ajustement, destiné à un usage pédagogique dans les filières scientifiques et professionnelles.
 
 ---
