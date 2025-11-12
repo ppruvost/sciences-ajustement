@@ -4,6 +4,7 @@ const equationDiv = document.getElementById('equation');
 
 let chart;
 
+// Fonction pour calculer la régression linéaire
 function linearRegression(x, y) {
   const n = x.length;
   let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
@@ -20,15 +21,16 @@ function linearRegression(x, y) {
   return { slope, intercept };
 }
 
+// Fonction pour calculer l'énergie reçue E = P * t
 function calculateEnergy(power, time) {
-  // E = P * t
-  const energy = power.map((p, i) => p * time[i]);
-  return energy;
+  return power.map((p, i) => p * time[i]);
 }
 
+// Événement lors de la soumission du formulaire
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  // Récupération et conversion des valeurs
   const time = document.getElementById('time-input').value.split(',').map(Number);
   const power = document.getElementById('power-input').value.split(',').map(Number);
 
@@ -37,16 +39,20 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
+  // Calcul de l'énergie
   const energy = calculateEnergy(power, time);
+
+  // Calcul de la régression linéaire
   const { slope, intercept } = linearRegression(time, energy);
 
-  // Affichage équation
-  equationDiv.textContent = `E = ${slope.toFixed(2)} × t + ${intercept.toFixed(2)} (J)`;
+  // Affichage de l'équation propre
+  let sign = intercept >= 0 ? "+" : "-";
+  equationDiv.textContent = `E = ${slope.toFixed(2)} × t ${sign} ${Math.abs(intercept.toFixed(2))} (J)`;
 
-  // Générer données droite
+  // Générer les points de la droite de régression
   const regressionLine = time.map(t => slope * t + intercept);
 
-  // Graphique
+  // Création du graphique
   if(chart) chart.destroy();
   chart = new Chart(chartCanvas, {
     type: 'scatter',
